@@ -1,0 +1,42 @@
+<main class="form-signin">
+  <form (submit)="onLogin($event)">
+    <a routerLink="/" style="cursor: pointer;">
+      <img class="mb-4" src="img/Esencias.jpeg" style="border-radius: 10px;" alt="" width="80" height="57">
+    </a>
+
+    <h1 class="h3 mb-3 fw-normal">¡Iniciar Sesión!</h1>
+
+    <div class="form-floating">
+      <input type="email" class="form-control" id="floatingInput" placeholder=" " [(ngModel)]="email" required>
+      <label for="floatingInput"> &#128100; | Usuario</label>
+    </div>
+
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" placeholder=" " [(ngModel)]="password" required>
+      <label for="floatingPassword"> &#128272; | Contraseña</label>
+      <i class="fas fa-eye-slash" id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;" (click)="togglePassword()"></i>
+    </div>
+    <br>
+
+    <button class="w-100 btn btn-lg btn-outline-warning" type="submit"> &#9758; Iniciar Sesión &#9756; </button>
+    <br><br>
+
+    <button class="btn btn-outline-light w-100 mb-2 btn-google" style="background-color: #4285F4; color: white;">
+      <i class="fab fa-google"></i> Iniciar sesión con Google
+    </button>
+
+    <button class="btn btn-outline-light w-100 btn-facebook" style="background-color: #4267B2; color: white;">
+      <i class="fab fa-facebook-f"></i> Iniciar sesión con Facebook
+    </button>
+
+    <p class="mt-3">
+      ¿No tienes una cuenta?
+      <a routerLink="/form">Regístrate aquí</a>
+    </p>
+
+    <div style="color: white">
+      <b> &copy; Esencias 2025 </b>
+    </div>
+  </form>
+</main>
+

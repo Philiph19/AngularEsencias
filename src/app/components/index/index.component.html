@@ -1,0 +1,207 @@
+<header>
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container d-flex justify-content-between align-items-center">
+      
+      <!-- Botón Hamburguesa -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+        aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Logo (Centrado en desktop, Izquierda en responsive) -->
+      <div class="logo-container">
+        <a href="Admin.html">
+          <img src="img/Esencias.jpeg" alt="Logo" class="logo-img">
+        </a>
+      </div>
+
+      <div class="navbar-right">
+        <!-- Buscador Bootstrap Dark -->
+        <form class="d-flex search-container">
+          <input class="form-control me-2 search-input" type="search" placeholder="Buscar..." aria-label="Search">
+          <button class="btn btn-outline-light" type="submit"><i class="fas fa-search"></i></button>
+        </form>
+      </div>
+
+      <!-- Iconos a la derecha -->
+      <div class="navbar-icons">
+        <a href="#" id="cart-button">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-text"> </span>
+          <span id="cart-count">0</span>  
+        </a>
+      </div>
+    </div> 
+
+    <!-- Menú hamburguesa -->
+    <div class="collapse bg-dark" id="navbarHeader">
+      <div class="container"> 
+        <div class="nav-links">
+          <a routerLink="/">Home</a>
+          <a href="#nuevoProducto">Nuevos Productos</a>
+          <a routerLink="/login">Iniciar Sesión</a>
+
+        </div>
+
+        <!-- Redes Sociales -->
+        <div class="social-icons">
+          <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+  </nav> 
+
+  <!-- Modal del carrito -->
+  <div id="cart-modal" class="cart-modal">
+    <div class="cart-modal-content">
+      <span class="close-cart">&times;</span>
+      <h2>Tu Carrito</h2>
+      <div id="cart-items-list"></div>
+      <p>Total: <span id="cart-total">$0.00</span></p>
+      <button id="car" class="btn btn-warning w-100">Finalizar Compra</button><br>
+      <!--<button class="btn btn-danger w-100" id="clear-cart">Vaciar Carrito</button>-->
+    </div>
+  </div>
+</header>
+
+<!--Fin Nav y boton hamburguesa y funciones-->
+
+
+<!--Slider / Carrousel--> 
+
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="slider">
+          <img src="img/slide1.jpg" alt="Licores" width="100%" height="auto">
+        </div>
+
+        <div class="container">
+          <div class="carousel-caption text-start">
+            <b><h1>Cerbezas</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p></b><a class="btn btn-lg btn-primary" href="#">Detalles</a>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="slider">
+          <img src="img/slide2.jpg" alt="Slide2" width="100%" height="auto">
+        </div>
+
+        <div class="container">
+          <div class="carousel-caption">
+            <b><h1>Ron</h1>
+            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p></b><a class="btn btn-lg btn-success" href="#">Detalles</a>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="slider">
+          <img src="img/slide3.jpg" alt="Slide3" width="100%" height="auto">
+        </div>
+
+        <div class="container">
+          <div class="carousel-caption text-end">
+            <b><h1>Aguardiantes</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+            <p></b><a class="btn btn-lg btn-warning" href="#">Detalles</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Ocultar</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Siguiente</span>
+    </button>
+  </div>
+
+    <!--Fin carousel-->
+
+  <!-- Main Content -->
+  <main>
+    <div class="image-grid">
+      <div class="image-item">
+        <img src="img/poker330.png" alt="Producto 1" id="image-1">
+        <input type="number" class="quantity-input" id="quantity-1" value="1" min="1">
+        <button class="add-to-cart" onclick="addToCart('producto 1', event)">+</button>
+          <div class="cart-popup">Producto añadido al carrito</div>
+          <button class="btn btn-lg btn-outline-warning show-details-btn" data-product="producto 1">Detalles</button>
+      </div>
+
+      <div class="image-item">
+        <img src="img/poker750.png" alt="Producto 2" id="image-2">
+        <input type="number" class="quantity-input" id="quantity-1" value="1" min="1">
+        <button class="add-to-cart" onclick="addToCart('producto 2', event)">+</button>
+          <div class="cart-popup">Producto añadido al carrito</div>
+          <button class="btn btn-lg btn-outline-warning show-details-btn" data-product="producto 2">Detalles</button>
+      </div>
+
+      <div class="image-item">
+        <img src="img/poker330.png" alt="Producto 3" id="image-3"> <!--RonViejoCaldas750.png-->
+        <input type="number" class="quantity-input" id="quantity-1" value="1" min="1">
+        <button class="add-to-cart" onclick="addToCart('producto 3', event)">+</button>
+          <div class="cart-popup">Producto añadido al carrito</div>
+          <button class="btn btn-lg btn-outline-warning show-details-btn" data-product="producto 3">Detalles</button>
+      </div>
+
+      <div class="image-item"> 
+        <img src="img/poker330.png" alt="Producto 4" id="image-4">
+        <input type="number" class="quantity-input" id="quantity-1" value="1" min="1">
+        <button class="add-to-cart" onclick="addToCart('producto 4', event)">+</button>
+          <div class="cart-popup">Producto añadido al carrito</div>
+          <button class="btn btn-lg btn-outline-warning show-details-btn" data-product="producto 4">Detalles</button>
+      </div>
+
+      <div class="image-item">
+        <img src="img/poker750.png" alt="Producto 5" id="image-5">
+        <input type="number" class="quantity-input" id="quantity-1" value="1" min="1">
+        <button class="add-to-cart" onclick="addToCart('producto 5', event)">+</button>
+          <div class="cart-popup">Producto añadido al carrito</div>
+          <button class="btn btn-lg btn-outline-warning show-details-btn" data-product="producto 5">Detalles</button>
+      </div>
+
+      <div class="image-item">
+        <img src="img/poker330.png" alt="Producto 6" id="image-6">
+        <input type="number" class="quantity-input" id="quantity-1" value="1" min="1">
+        <button class="add-to-cart" onclick="addToCart('producto 6', event)">+</button>
+          <div class="cart-popup">Producto añadido al carrito</div>
+          <button class="btn btn-lg btn-outline-warning show-details-btn" data-product="producto 6">Detalles</button>
+      </div>
+      <!-- Agregar más productos -->
+    </div>
+
+      <!-- Display del carrito -->
+  <!--<div id="cart-display">Carrito: 0 productos</div>-->
+  </main>
+
+  <!-- Modal para detalles del producto -->
+  <div class="modal">
+    <div class="modal-content">
+      <div class="modal-body">
+        <!-- Detalles del producto -->
+      </div>
+        <span class="close" onclick="closeModal()">&times;</span>  <!--El &times Representa una X-->
+      
+    </div>
+  </div>
+
+  <a href="https://wa.me/573148549781?text=Hola%2C%20estoy%20interesado%20en%20sus%20servicios." id="whatsapp-button" target="_blank">
+  <img src="img/whatsapp.png" alt="WhatsApp">
+  </a>
+

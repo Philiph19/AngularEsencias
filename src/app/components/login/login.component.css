@@ -1,0 +1,214 @@
+/* General Styles */ 
+body {
+    background: url('img/fondologin2.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Definir la animación Fade In */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Comienza invisible */
+    }
+    to {
+        opacity: 1; /* Termina completamente visible */
+    }
+}
+
+/* Aplica la animación al elemento */
+.fade-in {
+    animation: fadeIn 0.3s ease-in forwards; /* 2 segundos de duración */
+}
+
+main.form-signin {
+    background: rgba(0, 0, 0, 0.5); /* Transparencia con efecto borroso */
+    backdrop-filter: blur(10px); /* Efecto borroso */
+    -webkit-backdrop-filter: blur(10px); /* Compatibilidad con Safari */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 400px;
+    box-sizing: border-box;
+}
+
+/* Logo Styles */
+form a img {
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Titles */
+form h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFC107;
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+.form-floating {
+    position: relative;
+    margin-bottom: 0px;
+}
+
+.form-floating input {
+    background: #222;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 30px;
+    width: 100%;
+    outline: none;
+    margin-bottom: 10px; /* Reducir el margen en el input mismo */
+}
+
+.form-floating input::placeholder {
+    color: transparent; /* Oculta el placeholder */
+}
+
+.form-floating label {
+    position: absolute;
+    top: 5px; /* Posición inicial */
+    left: 5px;
+    font-size: 14px;
+    color: #888;
+    transition: all 0.5s ease; /* Suaviza el movimiento */
+    pointer-events: none; /* Evita interferencias con el texto */
+}
+
+.form-floating input:focus + label,
+.form-floating input:not(:placeholder-shown) + label {
+    position: absolute;
+    top: -10px; /* Mueve la etiqueta hacia arriba */
+    left: 20px;
+    font-size: 14px; /* Tamaño más pequeño */
+    color: #FFC107; /* Color destacado */
+    border-radius: 30px;
+    padding: 0 10px;
+}
+
+/* Password Toggle Icon */
+#togglePassword {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #FFC107;
+    cursor: pointer;
+}
+
+/* Buttons */
+button {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s;
+}
+
+button[type="submit"] {
+    background: transparent;
+    color: #FFC107;
+    border: 2px solid #FFC107;
+}
+
+button[type="submit"]:hover {
+    background: #FFC107;
+    color: black;
+}
+
+/* Social Buttons */
+.btn-google {
+    background-color: #4285F4;
+    color: white;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.btn-google:hover {
+    background-color: #356AC3;
+}
+
+.btn-facebook {
+    background-color: #4267B2;
+    color: white;
+    border: none;
+}
+
+.btn-facebook:hover {
+    background-color: #365899;
+}
+
+/* Links */
+p a {
+    color: #FFC107;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+form div {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #888;
+}
+
+/* Responsive Design */
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 576px) {
+    main.form-signin {
+        width: 80%; /* Reducción del ancho del formulario */
+        padding: 25px; /* Reducir el padding */
+    }
+
+    form h1 {
+        font-size: 20px; /* Ajustar tamaño del título */
+    }
+
+    .form-floating label {
+        font-size: 12px; /* Reducir tamaño de las etiquetas */
+    }
+
+    button {
+        font-size: 14px; /* Reducir tamaño de fuente de botones */
+    }
+}
+
+/* Para pantallas medianas (tabletas) */
+@media (max-width: 768px) {
+    main.form-signin {
+        width: 80%; /* Ajustar el tamaño del formulario */
+        padding: 25px; /* Ajustar el padding */
+    }
+
+    form h1 {
+        font-size: 22px; /* Ajustar tamaño del título */
+    }
+
+    button {
+        font-size: 15px; /* Ajustar tamaño de fuente de botones */
+    }
+}
+
+/* Para pantallas grandes */
+@media (min-width: 992px) {
+    main.form-signin {
+        width: 400px; /* Mantener el tamaño del formulario en pantallas grandes */
+        padding: 30px; /* Mantener el padding */
+    }
+}
