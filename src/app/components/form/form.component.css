@@ -1,0 +1,296 @@
+/*General*/ 
+body {
+    background: url('/img/fondologin2.png') no-repeat center center fixed;
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    color: white;
+    margin: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modo Claro - Estilos generales (predeterminado) */
+
+body { 
+    background-color: white;
+    color: black;
+}
+
+/* Estilos para el modo oscuro (dark mode) */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: black;
+        color: white;
+    }
+}
+
+/*Carga-animación*/
+
+.loading-container {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Asegura que esté encima de todo */
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #ffc107; /* Color de la animación */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-container p {
+  color: #ffc107;
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Formulario */
+main.form-signin {
+    background: rgba(0, 0, 0, 0.5); /* Fondo en modo claro */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 100%;
+    max-width: 450px;
+    box-sizing: border-box;
+}
+
+/* Logo */
+form a img {
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Títulos */
+form h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFC107; /* Color de texto en modo claro */
+    margin-bottom: 20px;
+}
+
+/* Campos de entrada */
+.form-floating {
+    position: relative;
+    margin-bottom: 0px;
+}
+
+.form-floating input {
+    background: #222;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    outline: none;
+    margin-bottom: 22px;
+}
+
+.form-floating input::placeholder {
+    color: transparent;
+}
+
+.form-floating label {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 14px;
+    color: #888;
+    transition: all 0.5s ease;
+    pointer-events: none;
+    background: transparent !important;
+}
+
+.form-floating input:focus + label,
+.form-floating input:not(:placeholder-shown) + label {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-size: 14px;
+    color: #FFC107 !important ; /* Color destacado */
+    background-color: transparent !important;
+    border-radius: 30px;
+    padding: 0 10px;
+}
+
+/* Ajustes para el campo de fecha */
+.form-floating input[type="date"] {
+    background: #222;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 20px;
+    padding-right: 10px;
+    color: gray;
+    width: 100%;
+    outline: none;
+    cursor: pointer;
+}
+
+.form-floating input[type="date"]::placeholder {
+    color: transparent;
+}
+
+.form-floating input[type="date"]:focus + label,
+.form-floating input[type="date"]:not(:placeholder-shown) + label {
+    top: 5px;
+    left: 5px;
+    font-size: 12px;
+    color: #FFC107;
+}
+
+/* Icono para mostrar/ocultar contraseña */
+#togglePassword {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #FFC107;
+    cursor: pointer;
+}
+
+/* Botones */
+button {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s;
+    width: 100%;
+}
+
+button[type="submit"] {
+    background: transparent;
+    color: #FFC107;
+    border: 2px solid #FFC107;
+}
+
+button[type="submit"]:hover {
+    background: #FFC107;
+    color: black;
+}
+
+/* Links */
+p a {
+    color: #FFC107;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+form div {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #888;
+}
+
+/* Responsive Design */
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 576px) {
+    main.form-signin {
+        width: 90%;
+        padding: 20px;
+    }
+
+    form h1 {
+        font-size: 20px;
+    }
+
+    .form-floating label {
+        font-size: 12px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
+
+/* Para pantallas medianas (tabletas) */
+@media (max-width: 768px) {
+    main.form-signin {
+        width: 80%;
+        padding: 25px;
+    }
+
+    form h1 {
+        font-size: 22px;
+    }
+
+    button {
+        font-size: 15px;
+    }
+}
+
+/* Para pantallas grandes */
+@media (min-width: 992px) {
+    main.form-signin {
+        width: 400px;
+        padding: 30px;
+    }
+}
+
+/* Modo Oscuro - Estilos */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: url('/assets/fondologin.png') no-repeat center center fixed;
+        background-size: cover;
+        color: white;
+    }
+
+    main.form-signin {
+        background: rgba(0, 0, 0, 0.7); /* Fondo más oscuro para modo oscuro */
+    }
+
+    .form-floating input {
+        background: #333;
+        color: white;
+    }
+
+    .form-floating input:focus + label,
+    .form-floating input:not(:placeholder-shown) + label {
+        color: #FFC107;
+    }
+
+    button[type="submit"] {
+        background: transparent;
+        color: #FFC107;
+        border: 2px solid #FFC107;
+    }
+
+    button[type="submit"]:hover {
+        background: #FFC107;
+        color: black;
+    }
+}

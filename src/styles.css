@@ -15,4 +15,30 @@ body {
     background-color: black;
     color: white;
   }
+
+  .form-floating label {
+    position: absolute;
+    top: 5px; /* Posición inicial */
+    left: 5px;
+    font-size: 14px;
+    color: #888;
+    transition: all 0.5s ease; /* Suaviza el movimiento */
+    pointer-events: none; /* Evita interferencias con el texto */
+    background: transparent !important;
+}
+
+/*Anular el estilo de fondo blanco del label de bootstrap por defecto*/
+.form-floating > label {
+    background-color: transparent !important;
+}
   
+.form-floating input:focus + label,
+.form-floating input:not(:placeholder-shown) + label {
+    position: absolute;
+    top: -10px; /* Mueve la etiqueta hacia arriba */
+    left: 20px;
+    font-size: 14px; /* Tamaño más pequeño */
+    color: #FFC107; /* Color destacado */
+    border-radius: 30px;
+    padding: 0 10px;
+}

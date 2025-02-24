@@ -1,0 +1,76 @@
+/* Modo claro (por defecto) */
+body.light {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Modo oscuro */
+body.dark {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+/* Estilos adicionales para mejorar la visibilidad en modo oscuro */
+.dark .navbar {
+    background-color: #1f1f1f !important;
+}
+
+.dark .table {
+    background-color: #1f1f1f;
+    color: #ffffff;
+}
+
+.dark .table thead {
+    background-color: #333;
+}
+
+.dark .btn {
+    border-color: #ffffff;
+}
+
+.dark .btn-outline-light {
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+.dark .btn-outline-light:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Modal en modo oscuro */
+.dark .modal-content {
+    background-color: #1f1f1f;
+    color: #ffffff;
+}
+
+.dark .modal-header {
+    background-color: #292929;
+    border-bottom: 1px solid #444;
+}
+
+.dark .modal-footer {
+    background-color: #292929;
+    border-top: 1px solid #444;
+}
+
+/* Ajustes para los inputs y selects dentro del modal */
+.dark .modal-body input,
+.dark .modal-body select {
+    background-color: #333;
+    color: #ffffff;
+    border: 1px solid #555;
+}
+
+.dark .modal-body input::placeholder {
+    color: #bbb;
+}
+
+.dark .modal-body select {
+    color: #ffffff;
+}
+
+/* Botón de cierre en modo oscuro */
+.dark .btn-close {
+    filter: invert(1);
+}

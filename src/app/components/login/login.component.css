@@ -1,7 +1,8 @@
 /* General Styles */ 
-body {
-    background: url('img/fondologin2.png') no-repeat center center fixed;
+body { 
+    background: url('/img/fondologin2.png') no-repeat center center fixed;
     background-size: cover;
+    background-position: center;
     font-family: Arial, sans-serif;
     color: white;
     display: flex;
@@ -10,7 +11,7 @@ body {
     height: 100vh;
     margin: 0;
 }
-
+ 
 /* Definir la animación Fade In */
 
 @keyframes fadeIn {
@@ -72,7 +73,7 @@ form h1 {
 
 .form-floating input::placeholder {
     color: transparent; /* Oculta el placeholder */
-}
+} 
 
 .form-floating label {
     position: absolute;
@@ -82,6 +83,12 @@ form h1 {
     color: #888;
     transition: all 0.5s ease; /* Suaviza el movimiento */
     pointer-events: none; /* Evita interferencias con el texto */
+    background: transparent !important;
+}
+
+/*Anular el estilo de fondo blanco del label de bootstrap por defecto*/
+.form-floating > label {
+    background-color: transparent !important;
 }
 
 .form-floating input:focus + label,
@@ -90,7 +97,8 @@ form h1 {
     top: -10px; /* Mueve la etiqueta hacia arriba */
     left: 20px;
     font-size: 14px; /* Tamaño más pequeño */
-    color: #FFC107; /* Color destacado */
+    color: #FFC107 !important ; /* Color destacado */
+    background-color: transparent !important;
     border-radius: 30px;
     padding: 0 10px;
 }

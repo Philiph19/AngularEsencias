@@ -1,0 +1,110 @@
+/* Modo claro (por defecto) */
+body.light {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Modo oscuro */
+body.dark {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark .navbar {
+  background-color: #333;
+}
+
+body.dark .navbar-nav .nav-link {
+  color: #eaeaea;
+}
+
+body.dark .navbar-nav .nav-link:hover,
+body.dark .navbar-nav .nav-link.active {
+  color: #ff7f32;
+}
+
+body.dark .list-group-item {
+  background-color: #2c2c2c;
+  color: #eaeaea;
+}
+
+body.dark .list-group-item:hover {
+  background-color: #444;
+}
+
+body.dark .card {
+  background-color: #2c2c2c;
+  color: #eaeaea;
+}
+
+body.dark .table-striped tbody tr:nth-child(odd) {
+  background-color: #444;
+}
+
+body.dark .table-striped tbody tr:nth-child(even) {
+  background-color: #333;
+}
+
+body.dark .table th, body.dark .table td {
+  border-color: #444;
+}
+
+body.dark .btn-success {
+  background-color: #28a745;
+  border-color: #218838;
+}
+
+body.dark .btn-warning {
+  background-color: #ffc107;
+  border-color: #e0a800;
+}
+
+body.dark .btn-info {
+  background-color: #17a2b8;
+  border-color: #138496;
+}
+
+body.light .navbar {
+  background-color: #007bff;
+}
+
+body.light .list-group-item {
+  background-color: #f8f9fa;
+  color: #343a40;
+}
+
+body.light .card {
+  background-color: #ffffff;
+  color: #343a40;
+}
+
+body.light .table-striped tbody tr:nth-child(odd) {
+  background-color: #f8f9fa;
+}
+
+body.light .table-striped tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+body.light .table th, body.light .table td {
+  border-color: #ddd;
+}
+
+/* Establecemos el body para usar Flexbox */
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Para que ocupe toda la altura de la ventana */
+}
+
+/* El contenedor principal debe ocupar el espacio restante */
+.container {
+  flex: 1;
+}
+
+/* Footer siempre al final */
+footer {
+  width: 100%;
+  position: relative; /* Asegura que el footer se quede al fondo */
+  background-color: #333; /* Cambiar según el tema */
+}

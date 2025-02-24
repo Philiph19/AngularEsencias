@@ -1,4 +1,4 @@
-<main class="form-signin">
+<main class="form-signin"> 
   <form (submit)="onLogin($event)">
     <a routerLink="/" style="cursor: pointer;">
       <img class="mb-4" src="img/Esencias.jpeg" style="border-radius: 10px;" alt="" width="80" height="57">
@@ -7,13 +7,13 @@
     <h1 class="h3 mb-3 fw-normal">¡Iniciar Sesión!</h1>
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder=" " [(ngModel)]="email" required>
-      <label for="floatingInput"> &#128100; | Usuario</label>
+      <input type="email" class="form-control" id="floatingInput" placeholder=" " [(ngModel)]="email" required #nombre="ngModel">
+      <label for="floatingInput"> 👤 | Usuario</label>
     </div>
 
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder=" " [(ngModel)]="password" required>
-      <label for="floatingPassword"> &#128272; | Contraseña</label>
+      <input type="password" class="form-control" id="floatingPassword" placeholder=" " [(ngModel)]="password" required #nombre="ngModel">
+      <label for="floatingPassword"> 🔒 | Contraseña</label>
       <i class="fas fa-eye-slash" id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;" (click)="togglePassword()"></i>
     </div>
     <br>
@@ -25,7 +25,7 @@
       <i class="fab fa-google"></i> Iniciar sesión con Google
     </button>
 
-    <button class="btn btn-outline-light w-100 btn-facebook" style="background-color: #4267B2; color: white;">
+    <button class="btn btn-outline-light w-100 btn-facebook" style="background-color: #4267B2; color: white;" (click)="onFacebookLogin()">
       <i class="fab fa-facebook-f"></i> Iniciar sesión con Facebook
     </button>
 
@@ -39,4 +39,9 @@
     </div>
   </form>
 </main>
+
+<!-- Footer 
+<footer class="bg-dark text-white text-center py-3 mt-5">
+  <p>&copy; 2025 Esencias del Valle. Todos los derechos reservados.</p>
+</footer> -->
 

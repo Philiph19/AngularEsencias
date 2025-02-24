@@ -1,1 +1,59 @@
-<p>form works!</p>
+<div class="container mt-8"> 
+  <form (ngSubmit)="submitForm($event)">
+    <div class="text-center">
+      <a [routerLink]="'/index'" style="cursor: pointer;">
+        <img class="mb-4" src="img/Esencias.jpeg" style="border-radius: 10px;" alt="Logo" width="80" height="57">
+      </a>
+    </div>
+    <h3 class="h3 mb-3 fw-normal text-center">¡Registro!</h3>
+
+    <div class="form-floating mb-6">
+      <input type="text" class="form-control" id="nombre" placeholder=" " [(ngModel)]="formData.nombre" name="nombre" required #nombre="ngModel">
+      <label for="nombre">👤 | Nombres</label>
+    </div>
+
+    <div class="form-floating mb-6">
+      <input type="text" class="form-control" id="apellidos" placeholder=" " [(ngModel)]="formData.apellidos" name="apellidos" required #nombre="ngModel">
+      <label for="apellidos">👤 | Apellidos</label>
+    </div>
+
+    <div class="form-floating mb-6">
+      <input type="email" class="form-control" id="email" placeholder=" " [(ngModel)]="formData.email" name="email" required #nombre="ngModel">
+      <label for="email">📧 | Correo</label>
+    </div>
+
+    <div class="form-floating mb-6 position-relative">
+      <input type="password" class="form-control" id="password" placeholder=" " [(ngModel)]="formData.password" name="password" required #nombre="ngModel">
+      <label for="password">🔒 | Contraseña</label>
+      <i class="fas fa-eye-slash"
+         id="togglePassword"
+         (click)="togglePassword('password', 'togglePassword')"
+         style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: orange;">
+      </i>
+    </div>
+
+    <div class="form-floating mb-6 position-relative">
+      <input type="password" class="form-control" id="confirmPassword" placeholder=" " [(ngModel)]="formData.confirmPassword" name="confirmPassword" required #nombre="ngModel">
+      <label for="confirmPassword">🔒 | Confirmar Contraseña</label>
+      <i class="fas fa-eye-slash"
+         id="toggleConfirmPassword"
+         (click)="togglePassword('confirmPassword', 'toggleConfirmPassword')"
+         style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer; color: orange;">
+      </i>
+    </div>
+
+    <div class="form-floating mb-6">
+      <input type="date" class="form-control" id="fechaNacimiento" [(ngModel)]="formData.fechaNacimiento" name="fechaNacimiento" required #nombre="ngModel">
+      <label for="fechaNacimiento">📅 | Fecha de Nacimiento</label>
+    </div>
+
+    <p class="mt-3">¿Ya tienes una cuenta? <a [routerLink]="'/login'">Iniciar Sesión</a></p>
+
+    <button class="w-100 btn btn-lg btn-outline-warning" type="submit">
+      ☛ Registrarse ☚
+    </button>
+
+    <div class="text-center mt-6">&copy; Esencias 2025</div>
+  </form>
+</div>
+

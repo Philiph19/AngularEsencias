@@ -287,7 +287,7 @@ body, html {
   color: white !important; /* Texto blanco */
 }
 
-/* Efecto cuando pasas el mouse */
+/* Efecto cuando se pasa el mouse */
 .swal2-select:hover {
   background: rgba(255, 255, 255, 0.2) !important;
 }
@@ -309,7 +309,6 @@ body, html {
     font-size: 16px;
     text-align: center;
 }
-
 .swal2-popup {
   background: rgba(0, 0, 0, 0.2) !important;
   color: white !important;
@@ -324,8 +323,6 @@ body, html {
 .swal2-select option {
   background: rgba(0, 0, 0, 0.8) !important;
 }
-
-
 /*Hasta aquí es el Sweet Alert2 ------------------------------------------------------*/
 
 
@@ -982,3 +979,4 @@ button #car {
   opacity: 0.8;  /* Efecto al pasar el cursor */
   transform: scale(1.05);
 }
+

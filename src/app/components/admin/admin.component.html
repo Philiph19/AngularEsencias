@@ -1,0 +1,83 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/">Esencias del Valle</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" routerLink="/">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/form-productos">Agregar productos</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/inventario">Inventario</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/historial-ventas">Historial Ventas</a></li>
+          <li class="nav-item"><a class="nav-link active" routerLink="/admin">Administrador</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="list-group">
+    <h4 class="list-group-item bg-dark text-white text-center p-3">Panel de Administración</h4>
+    <a routerLink="/inventario" class="list-group-item list-group-item-action">Inventario</a>
+    <a routerLink="/form-productos" class="list-group-item list-group-item-action">Agregar Producto</a>
+    <a routerLink="/historial-ventas" class="list-group-item list-group-item-action">Historial de Ventas</a>
+    <a routerLink="/" class="list-group-item list-group-item-action text-danger">Cerrar Sesión</a>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-dark text-white">
+      <h5>Gestión de Usuarios</h5>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Rol</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+            <td>
+              <button class="btn btn-warning btn-sm">Editar</button>
+              <button class="btn btn-danger btn-sm">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-9">
+        <div class="card">
+          <div class="card-header bg-dark text-white">
+            <h5>Bienvenido, Admin</h5>
+          </div>
+          <div class="card-body">
+            <p class="lead">Aquí puedes gestionar todo el contenido relacionado con los productos y las ventas.</p>
+            <div class="d-flex justify-content-start">
+              <a routerLink="/form-productos" class="btn btn-success me-3"><i class="fas fa-plus"></i> Agregar Nuevo Producto</a>
+              <a routerLink="/inventario" class="btn btn-warning me-3"><i class="fas fa-box"></i> Ver Inventario</a>
+              <a routerLink="/historial-ventas" class="btn btn-info"><i class="fas fa-chart-line"></i> Ver Historial de Ventas</a>
+            </div>
+          </div>      
+        </div><br>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <p>&copy; 2025 Esencias del Valle. Todos los derechos reservados.</p>
+  </footer>
+  

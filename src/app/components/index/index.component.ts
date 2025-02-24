@@ -47,15 +47,17 @@ export class IndexComponent implements OnInit, OnDestroy {
       icon: 'question',
       input: 'radio',
       background: 'rgba(0, 0, 0, 0.2)',
-      color: 'white',
+      color: 'black',
       customClass: { popup: 'swal-blur' },
-      inputOptions: { "yes": "Sí", "no": "No" },
+      inputOptions: { yes: 'Sí', no: 'No', },
       inputValidator: async (value) => {
         if (!value) return 'Por favor selecciona una opción.';
-        return undefined;
+        return undefined; 
       },
+      showCancelButton: false,
       confirmButtonColor: '#ff7f32',
       confirmButtonText: 'Confirmar',
+      cancelButtonText: 'Cancelar',
       allowOutsideClick: false,
       allowEscapeKey: false,
       allowEnterKey: false,
@@ -64,20 +66,39 @@ export class IndexComponent implements OnInit, OnDestroy {
     if (esMayorEdad === "yes") { 
       const { value: ciudadSeleccionada } = await Swal.fire({
         title: '¡Bienvenid@s a Esencias del Valle!',
-        text: 'Selecciona donde te encuentras',
+        text: '¡¡Primero selecciona donde te encuentras por favor!!',
         icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#ff7f32', //Color del boton
+        confirmButtonText: 'Confirmar', //Nombre del boton
+        allowOutsideClick: false, // Evita cerrar al hacer clic fuera
+        footer: '<span class="rojo">¡Información importante!</span>',
+        width: '70%',
+        padding: '1rem', 
+        backdrop: true,
+        timer: 50000,
+        timerProgressBar: true,
+        position: 'center', // Tipos: top-end, bottom-end, top, bottom, center
+        allowEscapeKey: false, // Impide que cierre con tecla ESC
         input: 'select',
+        inputPlaceholder: 'Ciudades',
+        inputValue: '',
         background: 'rgba(0, 0, 0, 0.2)', // Fondo transparente
         customClass: {
           popup: 'swal-blur', // Fondo de la alerta con desenfoque
-          input: 'swal2-select' // Aplica la clase al select
+          input: 'swal2-select', // Aplica la clase al select
+          validationMessage: 'swal-validation-message' // Estilo para el mensaje de error
+
       },
         inputOptions: { "Pereira": "Pereira", "Cartago": "Cartago", "Dosquebradas": "Dosquebradas" },
-        inputPlaceholder: 'Ciudades',
-        confirmButtonColor: '#ff7f32',
-        confirmButtonText: 'Confirmar',
-        allowOutsideClick: false,
-        color: 'white',
+        
+        showConfirmButton: true,
+        buttonsStyling: true,
+        showCloseButton: true,
+        closeButtonAriaLabel: 'Cerrar Alerta',
+        color: 'white',  // Color de texto
+
+        // Verificación dentro de preConfirm para evitar que se cierre si no se selecciona nada
         preConfirm: () => {
           const ciudad = Swal.getPopup()?.querySelector('select')?.value;
           if (!ciudad) {

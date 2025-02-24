@@ -1,0 +1,45 @@
+<!-- form-productos.component.html --> 
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Esencias del Valle</a>
+      <button class="btn btn-outline-light" (click)="volver()">⬅ Volver</button>
+    </div>
+  </nav>
+  
+  <div class="container mt-5">
+    <div class="card p-4">
+      <h2 class="text-center mb-4">Formulario de Producto - Esencias del Valle</h2>
+      
+     <form [formGroup]="productoForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label class="form-label">Nombre del Producto</label>
+          <input type="text" class="form-control" formControlName="nombre" placeholder="Ingrese el nombre del producto">
+          <div *ngIf="productoForm.controls['nombre'].invalid && productoForm.controls['nombre'].touched" class="text-danger">
+            Nombre es requerido.
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <label class="form-label">Precio</label>
+          <input type="number" class="form-control" formControlName="precio" placeholder="Ingrese el precio">
+          <div *ngIf="productoForm.controls['precio'].invalid && productoForm.controls['precio'].touched" class="text-danger">
+            Ingrese un precio válido.
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <label class="form-label">Descripción</label>
+          <textarea class="form-control" formControlName="descripcion" rows="3" placeholder="Ingrese la descripción"></textarea>
+        </div>
+        
+        <div class="mb-3">
+          <label class="form-label">Imagen del Producto</label>
+          <input class="form-control" type="file" (change)="onFileSelected($event)" accept="image/*">
+        </div>
+        
+        <button type="submit" class="btn btn-outline-warning w-100" [disabled]="productoForm.invalid">Enviar</button>
+      </form>
+    </div>
+  </div>
+
+  
