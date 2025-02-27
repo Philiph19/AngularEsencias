@@ -1,15 +1,35 @@
 /*General*/ 
-body {
+body { 
     background: url('/img/fondologin2.png') no-repeat center center fixed;
     background-size: cover;
     background-position: center;
     font-family: Arial, sans-serif;
     color: white;
     margin: 0;
-    height: 100%;
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+}
+
+.form-signin {
+    background: rgba(0, 0, 0, 0.4); /* Fondo semitransparente */
+    backdrop-filter: blur(10px); /* Efecto borroso */
+    -webkit-backdrop-filter: blur(10px); /* Compatibilidad con Safari */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 500px;
+}
+
+#togglePassword {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #FFC107;
+    cursor: pointer;
 }
 
 /* Modo Claro - Estilos generales (predeterminado) */
@@ -66,17 +86,15 @@ body {
 
 /* Formulario */
 main.form-signin {
-    background: rgba(0, 0, 0, 0.5); /* Fondo en modo claro */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 30px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    background: rgba(0, 0, 0, 0.5); /* Transparencia con efecto borroso */
+    backdrop-filter: blur(10px); /* Efecto borroso */
+    -webkit-backdrop-filter: blur(10px); /* Compatibilidad con Safari */
+    margin-top: 20px;
+    margin-bottom: 20px;
     border-radius: 15px;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    width: 100%;
-    max-width: 450px;
+    text-align: left;
+    width: 400px;
     box-sizing: border-box;
 }
 
@@ -94,21 +112,18 @@ form h1 {
     margin-bottom: 20px;
 }
 
-/* Campos de entrada */
-.form-floating {
-    position: relative;
-    margin-bottom: 0px;
-}
-
 .form-floating input {
     background: #222;
-    border: none;
-    border-radius: 5px;
+    border: 1px solid #ffc107;
     color: white;
     padding: 10px;
     width: 100%;
-    outline: none;
-    margin-bottom: 22px;
+    border-radius: 5px;
+}
+
+.form-floating label {
+    color: #ffc107;
+    font-weight: bold;
 }
 
 .form-floating input::placeholder {
@@ -164,14 +179,20 @@ form h1 {
     color: #FFC107;
 }
 
-/* Icono para mostrar/ocultar contraseña */
-#togglePassword {
+/* Icono para mostrar/ocultar contraseña */ 
+.position-relative {
+    position: relative;
+}
+
+.eye-icon {
     position: absolute;
-    right: 15px;
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    color: #FFC107;
     cursor: pointer;
+    color: red;
+    font-size: 18px;
+    padding: 5px;
 }
 
 /* Botones */
@@ -190,6 +211,7 @@ button[type="submit"] {
     background: transparent;
     color: #FFC107;
     border: 2px solid #FFC107;
+    transition: 0.3s;
 }
 
 button[type="submit"]:hover {
@@ -264,9 +286,14 @@ form div {
 /* Modo Oscuro - Estilos */
 @media (prefers-color-scheme: dark) {
     body {
-        background: url('/assets/fondologin.png') no-repeat center center fixed;
+        background: url('/img/fondologin.png') no-repeat center center fixed;
         background-size: cover;
         color: white;
+    }    
+
+    .form-signin {
+        background: rgba(0, 0, 0, 0.2); /* Más transparente */
+        backdrop-filter: blur(15px); /* Efecto vidrio esmerilado */
     }
 
     main.form-signin {

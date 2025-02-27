@@ -1,16 +1,20 @@
-<!-- Barra de navegación --> 
-<nav class="navbar navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Esencias del Valle</a>
-        <a routerLink="/admin" class="btn btn-outline-light">⬅ Volver</a>
-    </div>
-</nav>
+<!-- Contenedor principal para ocupar toda la pantalla -->
+<div class="d-flex flex-column min-vh-100">
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Esencias del Valle</a>
+            <button class="btn btn-outline-light" (click)="volver()">⬅ Volver</button>
+        </div>
+    </nav>
 
-<div class="container mt-4">
-    <h2 class="mb-3">Inventario</h2>
+    <div class="container mt-4">
+        <h2 class="mb-3">Inventario</h2>
     
     <!-- Botón para agregar producto -->
-    <button class="btn btn-outline-light mb-3" (click)="abrirModal()">Agregar Producto</button>
+    <button class="btn btn-outline-success mb-3" (click)="abrirModal()" data-bs-toggle="modal" data-bs-target="#modalAgregar">
+        <i class="bi bi-plus-circle"></i> Agregar Producto
+      </button>      
 
     <!-- Tabla de inventario -->
     <div class="table-responsive">
@@ -39,8 +43,12 @@
                         </span>
                     </td>
                     <td>
-                        <button class="btn btn-warning btn-sm" (click)="editarProducto(producto)">Editar</button>
-                        <button class="btn btn-danger btn-sm" (click)="eliminarProducto(producto.id)">Eliminar</button>
+                        <button class="btn btn-warning btn-sm me-4" (click)="editarProducto(producto)">
+                            <i class="fas fa-pencil-alt"></i> <!-- Ícono de lápiz -->
+                          </button>
+                          <button class="btn btn-danger btn-sm" (click)="eliminarProducto(producto.id)">
+                            <i class="fas fa-trash-alt"></i> <!-- Ícono de caneca -->
+                          </button>
                     </td>
                 </tr>
             </tbody>
@@ -51,10 +59,12 @@
 <!-- Modal para agregar producto -->
 <div class="modal fade" id="modalAgregar" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content bg-dark text-light">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalLabel">{{ esEdicion ? 'Editar Producto' : 'Agregar Producto' }}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <!--<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+                <!--Color del modal de cierre (La X)--> 
+                <button type="button" class="btn-close" style="filter: invert(1);" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form (ngSubmit)="guardarProducto()">
@@ -94,4 +104,7 @@
         </div>
     </div>
 </div>
-
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <p>&copy; 2025 Esencias del Valle. Todos los derechos reservados.</p>
+    </footer>
+</div>

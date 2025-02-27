@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NgIf } from '@angular/common';
+import { Component } from '@angular/core'; 
+import { NgIf } from '@angular/common'; 
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ViewEncapsulation } from '@angular/core';
@@ -25,23 +25,32 @@ export class FormComponent {
   showPassword: boolean = false;
   showConfirmPassword: boolean = false;
 
-  togglePassword(fieldId: string, toggleIconId: string): void {
+  // Alternar visibilidad de contraseña
+  togglePassword(fieldId: string, field: 'password' | 'confirmPassword'): void {
     const input = document.getElementById(fieldId) as HTMLInputElement;
-    const toggleIcon = document.getElementById(toggleIconId);
     
     if (input) {
-      const isPassword = input.type === 'password';
-      input.type = isPassword ? 'text' : 'password';
-
-      if (toggleIcon) {
-        toggleIcon.classList.toggle('fa-eye-slash', !isPassword);
-        toggleIcon.classList.toggle('fa-eye', isPassword);
+      if (field === 'password') {
+        this.showPassword = !this.showPassword;
+        input.type = this.showPassword ? 'text' : 'password';
+      } else {
+        this.showConfirmPassword = !this.showConfirmPassword;
+        input.type = this.showConfirmPassword ? 'text' : 'password';
       }
     }
   }
 
   submitForm(event: Event): void {
     event.preventDefault();
-    console.log('Formulario enviado:', this.formData);
+    
+    // Validación básica de contraseñas
+    if (this.formData.password !== this.formData.confirmPassword) {
+      alert("Las contraseñas no coinciden");
+      return;
+    }
+
+    //console.log('Formulario enviado:', this.formData);
+    //alert("Registro exitoso!");
   }
 }
+

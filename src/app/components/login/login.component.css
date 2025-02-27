@@ -1,5 +1,5 @@
 /* General Styles */ 
-body { 
+body {
     background: url('/img/fondologin2.png') no-repeat center center fixed;
     background-size: cover;
     background-position: center;
@@ -67,8 +67,7 @@ form h1 {
     color: white;
     padding: 30px;
     width: 100%;
-    outline: none;
-    margin-bottom: 10px; /* Reducir el margen en el input mismo */
+    
 }
 
 .form-floating input::placeholder {
@@ -81,7 +80,7 @@ form h1 {
     left: 5px;
     font-size: 14px;
     color: #888;
-    transition: all 0.5s ease; /* Suaviza el movimiento */
+    transition: all 0.5s ease; /*Suaviza el movimiento */
     pointer-events: none; /* Evita interferencias con el texto */
     background: transparent !important;
 }
@@ -89,18 +88,6 @@ form h1 {
 /*Anular el estilo de fondo blanco del label de bootstrap por defecto*/
 .form-floating > label {
     background-color: transparent !important;
-}
-
-.form-floating input:focus + label,
-.form-floating input:not(:placeholder-shown) + label {
-    position: absolute;
-    top: -10px; /* Mueve la etiqueta hacia arriba */
-    left: 20px;
-    font-size: 14px; /* Tamaño más pequeño */
-    color: #FFC107 !important ; /* Color destacado */
-    background-color: transparent !important;
-    border-radius: 30px;
-    padding: 0 10px;
 }
 
 /* Password Toggle Icon */

@@ -6,6 +6,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { HistorialVentasComponent } from './components/historial-ventas/historial-ventas.component';
 import { InventarioComponent } from './components/inventario/inventario.component';
 import { FormProductosComponent } from './components/form-productos/form-productos.component';
+import { CompraComponent } from './components/compra/compra.component';
 
 export const routes: Routes = [
   { path: '', component: IndexComponent }, // Ruta principal
@@ -14,8 +15,8 @@ export const routes: Routes = [
   { path: 'admin', component: AdminComponent}, //Ruta para el Adminitrador
   { path: 'historial-ventas', component: HistorialVentasComponent }, // Ruta Historial de Ventas
   { path: 'inventario', component: InventarioComponent}, // Ruta del Inventario de productos
-  { path: 'form-productos', component: FormProductosComponent} // Ruta del Formulario de productos
+  { path: 'form-productos', component: FormProductosComponent}, // Ruta del Formulario de productos
+  { path: 'compra', component: CompraComponent} //Ruta de Carrito de Compras
 ];
-
 
 

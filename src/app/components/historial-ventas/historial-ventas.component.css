@@ -74,3 +74,9 @@ body.dark {
 .dark .btn-close {
     filter: invert(1);
 }
+
+footer {
+    width: 100%;
+    position: relative; /* Asegura que el footer se quede al fondo */
+    background-color: #333; /* Cambiar según el tema */
+  }

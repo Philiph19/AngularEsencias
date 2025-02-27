@@ -1,44 +1,58 @@
-<div class="container mt-4">
+<!-- Contenedor principal para ocupar toda la pantalla -->
+<div class="d-flex flex-column min-vh-100">
+  
+  <div class="container mt-4 flex-grow-1">
     <!-- Barra de navegación -->
     <nav class="navbar navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" routerLink="/">Esencias del Valle</a>
-        <a routerLink="/admin" class="btn btn-outline-light">⬅ Volver</a>
+        <button class="btn btn-outline-light" (click)="volver()">⬅ Volver</button>
       </div>
     </nav>
-  
+    <br>
+
     <div class="row">
       <!-- Historial de ventas -->
       <div class="col-md-6">
         <div class="card">
-          <div class="card-header">
-            <h5>Historial de Ventas</h5>
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Historial de Ventas</h5>
+            <!-- Botón para agregar venta -->
+            <button class="btn btn-success btn-sm" (click)="agregarVenta('2025-02-24', 'Nuevo Producto', 3, 50000)">
+              <i class="bi bi-plus-circle"></i> Agregar Venta
+            </button>
           </div>
           <div class="card-body">
             <table class="table table-bordered">
-              <thead>
+              <thead class="table-dark">
                 <tr>
                   <th>Fecha</th>
                   <th>Producto</th>
                   <th>Cantidad</th>
                   <th>Precio Unitario</th>
                   <th>Total</th>
+                  <th>Acciones</th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let venta of ventas"> 
+                <tr *ngFor="let venta of ventas; let i = index"> 
                   <td>{{ venta.fecha }}</td>
                   <td>{{ venta.producto }}</td>
                   <td>{{ venta.cantidad }}</td>
+                  <td>{{ venta.precio | currency:'COP':'code':'1.0-0' }}</td>
                   <td>{{ venta.total | currency:'COP':'code':'1.0-0' }}</td>
-                  <td>{{ venta.total | currency:'COP':'code':'1.0-0' }}</td>
+                  <td>
+                    <button class="btn btn-danger btn-sm" (click)="eliminarVenta(i)">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
       </div>
-  
+
       <!-- Gráfica de ventas -->
       <div class="col-md-6">
         <div class="card">
@@ -46,11 +60,17 @@
             <h5>Gráfica de Ventas</h5>
           </div>
           <div class="card-body">
-            <canvas id="ventasChart"></canvas>
+            <canvas #ventasChart></canvas>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  
+  <!-- Footer siempre abajo -->
+  <footer class="bg-dark text-white text-center py-3 mt-auto">
+    <p>&copy; 2025 Esencias del Valle. Todos los derechos reservados.</p>
+  </footer>
+
+</div>
+
