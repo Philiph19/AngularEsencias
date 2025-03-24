@@ -7,6 +7,8 @@ import { HistorialVentasComponent } from './components/historial-ventas/historia
 import { InventarioComponent } from './components/inventario/inventario.component';
 import { FormProductosComponent } from './components/form-productos/form-productos.component';
 import { CompraComponent } from './components/compra/compra.component';
+import { MapaComponent } from './components/mapa/mapa.component';
+import { FormapsComponent } from './components/formaps/formaps.component';
 
 export const routes: Routes = [
   { path: '', component: IndexComponent }, // Ruta principal
@@ -16,7 +18,8 @@ export const routes: Routes = [
   { path: 'historial-ventas', component: HistorialVentasComponent }, // Ruta Historial de Ventas
   { path: 'inventario', component: InventarioComponent}, // Ruta del Inventario de productos
   { path: 'form-productos', component: FormProductosComponent}, // Ruta del Formulario de productos
-  { path: 'compra', component: CompraComponent} //Ruta de Carrito de Compras
+  { path: 'compra', component: CompraComponent}, //Ruta de Carrito de Compras
+  { path: 'mapa', component: MapaComponent}, //Ruta del Mapa de clientes
+  { path: 'formaps', component: FormapsComponent} //Ruta Formulario Mapa
 ];
-
-
+ 

@@ -323,6 +323,50 @@ body, html {
 .swal2-select option {
   background: rgba(0, 0, 0, 0.8) !important;
 }
+
+.swal-blur {
+  backdrop-filter: blur(10px); /* Aplica el desenfoque */
+  background: rgba(0, 0, 0, 0.2); /* Fondo semitransparente */
+  border-radius: 10px;
+}
+
+.swal-validation-message {
+  color: red;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.3); /* Fondo semitransparente */
+  backdrop-filter: blur(8px); /* Aplica el desenfoque */
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+/* ===================== SWEETALERT2: CORRECCIÓN DE SELECT ===================== */
+.swal2-select {
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid #ccc !important;
+  padding: 8px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.swal2-select option {
+  background-color: white !important;
+  color: black !important;
+}
+
+/* Hover y Focus */
+.swal2-select:focus {
+  border-color: #ff7f32 !important;
+  outline: none;
+}
+
+.swal2-select:hover {
+  border-color: #ff7f32 !important;
+}
+
 /*Hasta aquí es el Sweet Alert2 ------------------------------------------------------*/
 
 
@@ -406,10 +450,10 @@ body, html {
   box-sizing: border-box;
 }
 
-/* Mantener el tamaño de las imágenes */ ______________________
+/* Mantener el tamaño de las imágenes */
 .image-item img {
-  width: 150px;
-  height: 150px;
+  width: 550px !important; /* Ajusta el tamaño según se requiera */
+  height: auto !important;
   object-fit: cover;
   border-radius: 10px;
   border: 2px solid transparent;
@@ -419,6 +463,23 @@ body, html {
 .image-item img:hover { 
   transform: scale(0.25);
   border: 2px solid #ff7f32; /* Contorno naranja al hacer hover */
+}
+
+.product-container {
+  display: flex;
+  justify-content: left; /* Centra los productos horizontalmente */
+  gap: 220px; /* Espacio entre productos */
+  flex-wrap: wrap; /* Permite que los productos bajen si no caben */
+  max-width: 100%; /* Evita que los productos se desborden */
+  padding: 5px; /* Espaciado interno */
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+}
+
+.image-item {
+  text-align: center;
+  width: 200px; /* Ajusta el tamaño de cada producto */
+  flex: 1; /* Permite que los productos se distribuyan equitativamente */
+  max-width: 250px; /* Máximo ancho de cada producto */
 }
 
 /* Botón "+" flotante */
@@ -962,7 +1023,7 @@ button #car {
   z-index: 9999;
   display: block;  /* Asegura que el enlace sea un bloque */
   width: 60px;  /* Ajusta el tamaño del ícono */
-  height: 60px;
+  height: 60px;           
   padding: 10px;
   background-color: transparent;  /* Fondo transparente para no cubrir el logo */
   border-radius: 50%;

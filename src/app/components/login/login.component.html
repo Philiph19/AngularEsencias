@@ -21,18 +21,20 @@
     <button class="w-100 btn btn-lg btn-outline-warning" type="submit"> &#9758; Iniciar Sesión &#9756; </button>
     <br><br>
 
-    <button class="btn btn-outline-light w-100 mb-2 btn-google" style="background-color: #4285F4; color: white;">
-      <i class="fab fa-google"></i> Iniciar sesión con Google
-    </button>
-
-    <button class="btn btn-outline-light w-100 btn-facebook" style="background-color: #4267B2; color: white;" (click)="onFacebookLogin()">
-      <i class="fab fa-facebook-f"></i> Iniciar sesión con Facebook
-    </button>
+      <button class="btn btn-outline-light w-100 btn-google d-flex align-items-center justify-content-center" 
+        style="background-color: lightcoral; color: white;">
+        <i class="fab fa-google me-2"></i> Iniciar sesión con Google
+      </button>
+    
+      <button class="btn btn-outline-light w-100 btn-facebook d-flex align-items-center justify-content-center" 
+        style="background-color: #4267B2; color: white;" (click)="onFacebookLogin()">
+        <i class="fab fa-facebook-f me-2"></i> Iniciar sesión con Facebook
+      </button> 
 
     <p class="mt-3">
       ¿No tienes una cuenta?
       <a routerLink="/form">Regístrate aquí</a>
-    </p>
+    </p> 
 
     <div style="color: white">
       <b> &copy; Esencias 2025 </b>

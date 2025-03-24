@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core'; 
-import { BehaviorSubject } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs'; 
 
-interface Product {
+interface Product { 
   id: string;
   name: string;
   price: number;
@@ -13,16 +13,16 @@ interface Product {
   providedIn: 'root'
 })
 export class CartService {
-  private cart: Product[] = [];
-  private cartItemCount = new BehaviorSubject<number>(0); // Contador reactivo
-  cartItemCount$ = this.cartItemCount.asObservable(); // Exponer el observable
+  public cart: Product[] = [];
+  public cartMap: { [key: string]: number } = {}; 
+  public cartItemCount = new BehaviorSubject<number>(0);
+  cartItemCount$ = this.cartItemCount.asObservable(); 
 
-  private productDetails: Record<string, Product> = {
-    'producto 1': { id: 'producto 1', name: 'Cerveza Poker', price: 7000, description: '...', imageUrl: 'assets/img/poker330.png' },
-    'producto 2': { id: 'producto 2', name: 'Cerveza Poker Mediana', price: 8000, description: '...', imageUrl: 'assets/img/poker750.png' },
-    'producto 3': { id: 'producto 3', name: 'Cerveza Poker Mini', price: 6500, description: '...', imageUrl: 'assets/img/poker330.png' },
-    'producto 4': { id: 'producto 4', name: 'Cerveza Poker Grande', price: 7000, description: '...', imageUrl: 'assets/img/poker750.png' }
-  };
+  private cartItems = new BehaviorSubject<Product[]>([]);
+  cartItems$ = this.cartItems.asObservable();
+
+  private cartTotal = new BehaviorSubject<number>(0);
+  cartTotal$ = this.cartTotal.asObservable();
 
   constructor() {
     this.loadCart();
@@ -30,32 +30,38 @@ export class CartService {
 
   private saveCart(): void {
     localStorage.setItem('cart', JSON.stringify(this.cart));
-    this.updateCartCount();
+    localStorage.setItem('cartMap', JSON.stringify(this.cartMap));
+    this.updateCart();
   }
 
   private loadCart(): void {
     const storedCart = localStorage.getItem('cart');
+    const storedCartMap = localStorage.getItem('cartMap');
+
     this.cart = storedCart ? JSON.parse(storedCart) : [];
-    this.updateCartCount();
+    this.cartMap = storedCartMap ? JSON.parse(storedCartMap) : {};
+    
+    this.updateCart();
   }
 
-  getProductById(productId: string): Product | undefined {
-    return this.productDetails[productId];
-  }
-
-  addToCart(productId: string): void {
-    const product = this.getProductById(productId);
-    if (!product) return;
-
-    if (!this.cart.some(item => item.id === productId)) {
+  addToCart(product: Product): void {  
+    if (this.cartMap[product.id]) {
+      this.cartMap[product.id]++; 
+    } else {
+      this.cartMap[product.id] = 1;
       this.cart.push(product);
     }
-
     this.saveCart();
   }
 
   removeFromCart(productId: string): void {
-    this.cart = this.cart.filter(item => item.id !== productId);
+    if (this.cartMap[productId]) {
+      this.cartMap[productId]--; 
+      if (this.cartMap[productId] === 0) {
+        delete this.cartMap[productId];
+        this.cart = this.cart.filter(item => item.id !== productId);
+      }
+    }
     this.saveCart();
   }
 
@@ -63,13 +69,33 @@ export class CartService {
     return this.cart;
   }
 
-  emptyCart(): void {
-    this.cart = [];
-    this.saveCart();
+  getGroupedCart() {
+    return this.cart.map(product => ({
+      ...product,
+      quantity: this.cartMap[product.id] || 0
+    }));
+  }
+
+  private updateCart(): void {
+    this.cartItems.next(this.cart);
+    this.cartTotal.next(this.calculateTotal());
+    this.updateCartCount();
   }
 
   private updateCartCount(): void {
-    this.cartItemCount.next(this.cart.length); // Actualiza el contador
+    const totalUniqueItems = Object.keys(this.cartMap).length; // Corrige el contador
+    this.cartItemCount.next(totalUniqueItems);
+  }
+
+  private calculateTotal(): number {
+    return this.cart.reduce((total, item) => total + (item.price * (this.cartMap[item.id] || 1)), 0);
+  }
+
+  emptyCart(): void {
+    this.cart = [];
+    this.cartMap = {};
+    localStorage.removeItem('cart');
+    localStorage.removeItem('cartMap');
+    this.updateCart();
   }
 }
-

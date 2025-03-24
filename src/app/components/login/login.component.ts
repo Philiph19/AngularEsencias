@@ -77,7 +77,7 @@ private handleGoogleCredentialResponse(response: any) {
 // FACEBOOK AUTH
 private initFacebookAuth() {
   if (document.getElementById('facebook-jssdk')) {
-    console.log('✅ Facebook SDK ya estaba cargado.');
+    console.log('Facebook SDK ya estaba cargado.');
     return; // Evita cargarlo más de una vez
   }
 
@@ -89,7 +89,7 @@ private initFacebookAuth() {
       xfbml: true,
       version: 'v19.0' 
     });
-    console.log('✅ Facebook SDK inicializado correctamente.');
+    console.log(' Facebook SDK inicializado correctamente.');
   };
 
   const script = document.createElement('script');
@@ -99,14 +99,14 @@ private initFacebookAuth() {
   script.defer = true;
   
   script.onload = () => {
-    console.log('✅ Facebook SDK cargado.');
+    console.log(' Facebook SDK cargado.');
   };
 
   document.body.appendChild(script);
 }
 
 onFacebookLogin() {
-  console.log('🔄 Verificando si el SDK está listo...');
+  console.log('Verificando si el SDK está listo...');
 
   if (typeof FB !== 'undefined' && FB !== null) {
     FB.getLoginStatus((response: any) => {
@@ -114,17 +114,17 @@ onFacebookLogin() {
         console.log('📌 Intentando iniciar sesión con Facebook...');
         FB.login((loginResponse: any) => {
           if (loginResponse.status === 'connected') {
-            console.log('✅ Token de Facebook:', loginResponse.authResponse.accessToken);
+            console.log(' Token de Facebook:', loginResponse.authResponse.accessToken);
           } else {
-            console.log('❌ No se pudo autenticar con Facebook.');
+            console.log(' No se pudo autenticar con Facebook.');
           }
         }, { scope: 'public_profile,email' });
       } else {
-        console.log('🔵 Ya estás autenticado en Facebook.');
+        console.log(' Ya estás autenticado en Facebook.');
       }
     });
   } else {
-    console.error('⚠️ El SDK de Facebook no está cargado o `FB.init()` no se ha ejecutado.');
+    console.error(' El SDK de Facebook no está cargado o `FB.init()` no se ha ejecutado.');
   }
 }
  

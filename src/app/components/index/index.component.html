@@ -21,25 +21,24 @@
         </form>
       </div>
 
-      <!-- Iconos a la derecha -->
-      <div class="navbar-icons">
+      <!-- Iconos a la derecha --> 
+      <div class="navbar-icons"> 
         <a href="#" id="cart-button">
           <i class="fas fa-shopping-cart"></i>
           <span class="cart-text"> </span>
-          <span id="cart-count">0</span>  
+          <span id="contador-productos"> {{ cartItemCount$ | async }}</span> 
         </a>
       </div>
-    </div> 
+    </div>
 
     <!-- Menú hamburguesa -->
     <div class="collapse bg-dark" id="navbarHeader">
-      <div class="container"> 
+      <div class="container">
         <div class="nav-links">
           <a routerLink="/">Home</a>
-          <a href="#nuevoProducto">Nuevos Productos</a>
+          <!--<a href="#nuevoProducto">Nuevos Productos</a>-->
           <a routerLink="/login">Iniciar Sesión</a>
           <a routerLink="/admin">Administrador</a>
-
         </div>
 
         <!-- Redes Sociales -->
@@ -53,17 +52,20 @@
   </nav>
 
   <!-- Modal del carrito -->
-  <div id="cart-modal" class="cart-modal">
+  <div id="cart-modal" class="cart-modal" style="display: none;">
     <div class="cart-modal-content">
-      <span class="close-cart">&times;</span>
-      <h2>Tu Carrito</h2>
-      <div id="cart-items-list"></div>
-      <p>Total: <span id="cart-total">$0.00</span></p>
-      <a routerLink="/compra" class="btn btn-warning w-100">Finalizar Compra</a>
-      <!--<button id="car" class="btn btn-warning w-100">Finalizar Compra</button><br>-->
-      <!--<button class="btn btn-danger w-100" id="clear-cart">Vaciar Carrito</button>-->
+      <span class="close-cart" (click)="toggleCartModal()">&times;</span>
+  
+      <div *ngFor="let producto of cartItemsGrouped$ | async">
+        <p>{{ producto.name }} (x{{ producto.quantity }}) - ${{ producto.price }}</p>
+        <button (click)="removeFromCart(producto.id)" class="btn btn-danger btn-sm">Eliminar</button>
+      </div>
+  
+      <p>Total: <span id="cart-total">{{ cartTotal$ | async }}</span></p>
+      <button (click)="emptyCart()" class="btn btn-danger w-100">Vaciar Carrito</button>
+      <a routerLink="/compra" class="btn btn-warning w-100 mt-2">Finalizar Compra</a>
     </div>
-  </div>
+  </div>  
 </header>
 
 <!--Fin Nav y boton hamburguesa y funciones-->
@@ -135,60 +137,43 @@
 
   <!-- Main Content -->
   <main>
-    <div class="image-grid">
-      <div class="image-item">
-        <img src="img/poker330.png" alt="Producto 1" id="image-1">
-        <!--<input type="number" class="quantity-input" id="quantity-1" value="1" min="1">-->
-        <button class="add-to-cart" onclick="addToCart('producto 1', event)">+</button>
-          <div class="cart-popup">Producto añadido al carrito</div>
-          <button class="btn btn-lg btn-outline-warning show-details-btn" data-product="producto 1">Detalles</button>
+    <div class="product-container"> <!-- div envolvente -->
+      <div *ngFor="let producto of productos" class="image-item">
+        <img [src]="producto.imageUrl" [alt]="producto.name">
+  
+        <button class="add-to-cart" (click)="addToCart(producto)">+</button>
+  
+        <button class="btn btn-lg btn-outline-warning show-details-btn" (click)="showProductDetails(producto)">
+          Detalles 
+        </button>        
       </div>
-
-      <div class="image-item">
-        <img src="img/poker750.png" alt="Producto 2" id="image-2">
-        <!--<input type="number" class="quantity-input" id="quantity-1" value="1" min="1">-->
-        <button class="add-to-cart" onclick="addToCart('producto 2', event)">+</button>
-          <div class="cart-popup">Producto añadido al carrito</div>
-          <button class="btn btn-lg btn-outline-warning show-details-btn" data-product="producto 2">Detalles</button>
+    </div> 
+  
+    <span id="contador-productos">Productos: {{ cartItemCount$ | async }}</span>
+  
+    <div id="cart-modal" class="cart-modal">
+      <div class="cart-modal-content">
+        <span class="close-cart" (click)="toggleCartModal()">&times;</span>
+        <h2>Tu Carrito</h2>
+  
+        <div *ngFor="let producto of cartItemsGrouped$ | async">
+          <p>{{ producto.name }} (x{{ producto.quantity }}) - ${{ producto.price * producto.quantity }}</p>
+          <button (click)="removeFromCart(producto.id)" class="btn btn-danger btn-sm">Eliminar</button>
+        </div>        
+  
+        <p>Total: <span id="cart-total">${{ cartTotal$ | async }}</span></p>
+        <a routerLink="/compra" class="btn btn-warning w-100">Finalizar Compra</a>        
       </div>
+    </div>
+  </main>
 
-      <div class="image-item">
-        <img src="img/poker330.png" alt="Producto 3" id="image-3"> <!--RonViejoCaldas750.png-->
-        <!--<input type="number" class="quantity-input" id="quantity-1" value="1" min="1">-->
-        <button class="add-to-cart" onclick="addToCart('producto 3', event)">+</button>
-          <div class="cart-popup">Producto añadido al carrito</div>
-          <button class="btn btn-lg btn-outline-warning show-details-btn" data-product="producto 3">Detalles</button>
-      </div>
-
-      <div class="image-item"> 
-        <img src="img/poker330.png" alt="Producto 4" id="image-4">
-        <!--<input type="number" class="quantity-input" id="quantity-1" value="1" min="1">-->
-        <button class="add-to-cart" onclick="addToCart('producto 4', event)">+</button>
-          <div class="cart-popup">Producto añadido al carrito</div>
-          <button class="btn btn-lg btn-outline-warning show-details-btn" data-product="producto 4">Detalles</button>
-      </div>
-
-      <div class="image-item">
-        <img src="img/poker750.png" alt="Producto 5" id="image-5">
-        <!--<input type="number" class="quantity-input" id="quantity-1" value="1" min="1">-->
-        <button class="add-to-cart" onclick="addToCart('producto 5', event)">+</button>
-          <div class="cart-popup">Producto añadido al carrito</div>
-          <button class="btn btn-lg btn-outline-warning show-details-btn" data-product="producto 5">Detalles</button>
-      </div>
-
-      <div class="image-item">
+  <!--<div class="image-item">
         <img src="img/poker330.png" alt="Producto 6" id="image-6">
-        <!--<input type="number" class="quantity-input" id="quantity-1" value="1" min="1">-->
         <button class="add-to-cart" onclick="addToCart('producto 6', event)">+</button>
           <div class="cart-popup">Producto añadido al carrito</div>
           <button class="btn btn-lg btn-outline-warning show-details-btn" data-product="producto 6">Detalles</button>
-      </div>
+      </div> -->
       <!-- Agregar más productos -->
-    </div>
-
-      <!-- Display del carrito -->
-  <!--<div id="cart-display">Carrito: 0 productos</div>-->
-  </main>
 
   <!-- Modal para detalles del producto -->
   <div class="modal">
